@@ -29,3 +29,6 @@ lcdi2c.lcd_display_string(get_ip_address('ppp0'), 1,3)
 while True:
 #Mostra a data no display
     lcdi2c.lcd_display_string("Data: %s" %time.strftime("%d/%m/%y"), 2,1)
+
+time.sleep(5)
+lcdi2c.lcd_clear()
