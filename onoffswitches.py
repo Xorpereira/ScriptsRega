@@ -6,20 +6,19 @@ GPIO.setmode(GPIO.BCM)
 
 GPIO.setup([5,6,13,19],GPIO.IN, pull_up_down=GPIO.PUD_DOWN);
 
+
 estadoanterior = [0, 0, 0, 0];
-# print "estado anterior inicial: ", estadoanterior[0:]
-input =[0, 0, 0, 0];
-# print "input1: ", input[0] 
+input =[0, 0, 0, 0]; 
 var = 1;
 
 
 while var == 1 :
+	
 	input[0] = GPIO.input(5);
 	input[1] = GPIO.input(6);
 	input[2] = GPIO.input(13);
 	input[3] = GPIO.input(19);
-	# print "input1: ", input[0]
-	# print "estadoanterior: ", estadoanterior[0]
+
 	if ( estadoanterior[0] != input[0] ) :
 		print "Button 1 Pressed"
 		if ( input[0] == 1 ) :
