@@ -43,7 +43,7 @@ while var == 1:
 		#print('Temp={0:0.1f}*F  Humidity={1:0.1f}%'.format(temperature, humidity))
 		try:
 			r=requests.get("http://rtupdate.wunderground.com/weatherstation/updateweatherstation.php?ID=IPAMPILH2&PASSWORD=u0dgvs0f&dateutc=now&humidity={1:0.1f}&tempf={0:0.1f}&realtime=1&rtfreq=10&action=updateraw".format(temperature, humidity))
-		except requests.exceptions.RequestException
+		except requests.exceptions.RequestException:
 			file=file.open('temphumlog.txt', 'a')
 			file.write(time.strftime("%c"))
 			file.close()
