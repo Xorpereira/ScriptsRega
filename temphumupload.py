@@ -26,7 +26,7 @@ humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
 # If this happens try again!
 if humidity is not None and temperature is not None:
     print('Temp={0:0.1f}*C  Humidity={1:0.1f}%'.format(temperature, humidity))
-	r=requests.get("http://rtupdate.wunderground.com/weatherstation/updateweatherstation.php?ID=IPAMPILH2&PASSWORD=u0dgvs0f&dateutc=now&humidity={1:0.1f}&tempc={0:0.1f}&realtime=1&rtfreq=10&action=updateraw".format(temperature, humidity))
+r=requests.get("http://rtupdate.wunderground.com/weatherstation/updateweatherstation.php?ID=IPAMPILH2&PASSWORD=u0dgvs0f&dateutc=now&humidity={1:0.1f}&tempc={0:0.1f}&realtime=1&rtfreq=10&action=updateraw".format(temperature, humidity))
 	
 else:
 	print('Failed to get reading. Try again!')
