@@ -6,7 +6,7 @@ import time
 
 var=1
 #Refreshrate in minutes
-refreshrate=1
+refreshrate=25
 
 # Sensor should be set to Adafruit_DHT.DHT11,
 # Adafruit_DHT.DHT22, or Adafruit_DHT.AM2302.
@@ -29,13 +29,24 @@ while var == 1:
 	#Fahrenheit convertion
 	temperature=temperature*9/5.0+32
 
+	#Last probe logs
+	file=file.open('temphumlog.txt', 'w')
+	file.write(temperature)
+	file.write(humidity)
+	file.close()
+	
 	# Note that sometimes you won't get a reading and
 	# the results will be null (because Linux can't
 	# guarantee the timing of calls to read the sensor).
 	# If this happens try again!
 	if humidity is not None and temperature is not None:
 		#print('Temp={0:0.1f}*F  Humidity={1:0.1f}%'.format(temperature, humidity))
-		r=requests.get("http://rtupdate.wunderground.com/weatherstation/updateweatherstation.php?ID=IPAMPILH2&PASSWORD=u0dgvs0f&dateutc=now&humidity={1:0.1f}&tempf={0:0.1f}&realtime=1&rtfreq=10&action=updateraw".format(temperature, humidity))
+		try:
+			r=requests.get("http://rtupdate.wunderground.com/weatherstation/updateweatherstation.php?ID=IPAMPILH2&PASSWORD=u0dgvs0f&dateutc=now&humidity={1:0.1f}&tempf={0:0.1f}&realtime=1&rtfreq=10&action=updateraw".format(temperature, humidity))
+		except requests.exceptions.RequestException
+			file=file.open('temphumlog.txt', 'a')
+			file.write(time.strftime("%c"))
+			file.close()
 	#else:
 	#	print('Failed to get reading. Try again!')
 	#Time until next probe/upload
