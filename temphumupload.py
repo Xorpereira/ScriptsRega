@@ -30,7 +30,7 @@ while var == 1:
 	temperature=temperature*9/5.0+32
 
 	#Last probe logs
-	file=file.open('temphumlog.txt', 'w')
+	file=open('temphumlog.txt', 'w')
 	file.write(temperature)
 	file.write(humidity)
 	file.close()
@@ -44,7 +44,7 @@ while var == 1:
 		try:
 			r=requests.get("http://rtupdate.wunderground.com/weatherstation/updateweatherstation.php?ID=IPAMPILH2&PASSWORD=u0dgvs0f&dateutc=now&humidity={1:0.1f}&tempf={0:0.1f}&realtime=1&rtfreq=10&action=updateraw".format(temperature, humidity))
 		except requests.exceptions.RequestException:
-			file=file.open('temphumlog.txt', 'a')
+			file=open('temphumlog.txt', 'a')
 			file.write(time.strftime("%c"))
 			file.close()
 	#else:
