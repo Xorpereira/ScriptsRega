@@ -20,7 +20,7 @@ sensor = Adafruit_DHT.AM2302
 # connected to GPIO23.
 pin = 12
 
-while var == 1
+while var == 1:
 
 	# Try to grab a sensor reading.  Use the read_retry method which will retry up
 	# to 15 times to get a sensor reading (waiting 2 seconds between each retry).
