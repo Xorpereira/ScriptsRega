@@ -31,8 +31,7 @@ while var == 1:
 
 	#Last probe logs
 	file=open('temphumlog.txt', 'w')
-	file.write(temperature)
-	file.write(humidity)
+	file.write('{0:0.1f}\n{1:0.1f}'.format(temperature,  humidity))
 	file.close()
 	
 	# Note that sometimes you won't get a reading and
