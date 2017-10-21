@@ -26,7 +26,7 @@ fi
 # Autostart Temperature/Humidity probe and upload
 (sleep 25s; python /home/pi/ScriptsRega/temphumupload.py) &
 
-#Delayed autostart 3g modem
+#Delayed autostart 3g modem. Change 'MEO' to 'Vodafone' or 'NOS' to change carrier
 (sleep 20s; wvdial MEO) &
 
 exit 0
