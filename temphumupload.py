@@ -17,7 +17,7 @@ sensor = Adafruit_DHT.AM2302
 #pin = 'P8_11'
 
 # Using a Raspberry Pi with DHT sensor
-# connected to GPIO23.
+# connected to GPIO12.
 pin = 12
 
 while var == 1:
